@@ -1,6 +1,5 @@
 // Send streams from cameras 0 and 1 to laptop from rpi
 #include <opencv2/opencv.hpp>
-// #include <opencv2/videoio.hpp>
 using namespace cv;
 
 #include <iostream>
@@ -10,8 +9,8 @@ int main(){
     String ip("172.17.141.179");
     VideoCapture cap0("libcamerasrc camera-name=/dev/video0 ! video/x-raw,width=640,height=480,framerate=30/1 ! appsink",CAP_GSTREAMER);
     VideoCapture cap1("libcamerasrc camera-name=/dev/video1 ! video/x-raw,width=640,height=480,framerate=30/1 ! appsink",CAP_GSTREAMER);
-    VideoWriter out0("appsrc ! v4l2convert ! v4l2h264enc ! 'video/x-h264,level=(string)4.2,profile=(string)baseline' ! h264parse ! rtph264pay config-interval=-1 ! udpsink host="+ip+" port=5000");
-    VideoWriter out1("appsrc ! v4l2convert ! v4l2h264enc ! 'video/x-h264,level=(string)4.2,profile=(string)baseline' ! h264parse ! rtph264pay config-interval=-1 ! udpsink host="+ip+" port=5001");
+    VideoWriter out0("appsrc ! v4l2convert ! v4l2h264enc ! 'video/x-h264,level=(string)4.2,profile=(string)baseline' ! h264parse ! rtph264pay config-interval=-1 ! udpsink host=172.17.141.179 port=5000", 0, 30.0, {640, 480}, 1);
+    VideoWriter out1("appsrc ! v4l2convert ! v4l2h264enc ! 'video/x-h264,level=(string)4.2,profile=(string)baseline' ! h264parse ! rtph264pay config-interval=-1 ! udpsink host=172.17.141.179 port=5001", 0, 30.0, {640, 480}, 1);
     
     if(!cap0.isOpened() || !out0.isOpened() || !cap1.isOpened() || !out1.isOpened()){
         cout << "Something did not open correctly" << endl;
