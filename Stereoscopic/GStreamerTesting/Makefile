@@ -6,7 +6,7 @@ CFLAGS := -std=c++11 -Wall
 LIBS := `pkg-config --libs opencv4`
 # Include path for OpenCV
 INC_PATH1 := -I/System/Volumes/Data/opt/homebrew/var/homebrew/linked/opencv/include/opencv4
-INC_PATH2 := -I/home/pi/opencv/include
+INC_PATH2 := `pkg-config --cflags opencv4` #-I/usr/include/opencv4
 
 # Default target
 all: 2StreamDisplay.cpp 2StreamSender.cpp
