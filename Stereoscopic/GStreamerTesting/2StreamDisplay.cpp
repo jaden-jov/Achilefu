@@ -1,6 +1,6 @@
 // receive and display rpi streams (hopefully) side by side
 #include <opencv2/opencv.hpp>
-#include <openc2/videoio.hpp>
+#include <opencv2/videoio.hpp>
 #include <opencv2/core.hpp>
 using namespace cv;
 

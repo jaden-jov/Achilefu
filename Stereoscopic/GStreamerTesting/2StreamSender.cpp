@@ -1,6 +1,6 @@
 // Send streams from cameras 0 and 1 to laptop from rpi
 #include <opencv2/opencv.hpp>
-#include <openc2/videoio.hpp>
+// #include <opencv2/videoio.hpp>
 using namespace cv;
 
 #include <iostream>
