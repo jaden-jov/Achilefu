@@ -8,9 +8,9 @@ using namespace cv;
 using namespace std;
 
 int main(){
-    VideoCapture cap0("udpsrc port=5000 caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink",CAP_GSTREAMER);
-    VideoCapture cap1("udpsrc port=5001 caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink",CAP_GSTREAMER);
-    if(!cap0.isOpened() || !cap0.isOpened())
+    VideoCapture cap0("gst-launch-1.0 udpsrc port=5000 caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink",CAP_GSTREAMER);
+    VideoCapture cap1("gst-launch-1.0 udpsrc port=5001 caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink",CAP_GSTREAMER);
+    if(!cap0.isOpened() || !cap1.isOpened())
     {
         cout<<"VideoCapture not opened"<<endl;
         exit(-1);
