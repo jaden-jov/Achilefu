@@ -7,7 +7,7 @@ using namespace std;
 
 int main(){
     String ip("172.17.141.179");
-    VideoCapture cap0("gst-launch-1.0 libcamerasrc camera-name=/base/soc/i2c0mux/i2c@0/imx219@10 ! video/x-raw,width=640,height=480,framerate=30/1 ! appsink",CAP_GSTREAMER);`
+    VideoCapture cap0("gst-launch-1.0 libcamerasrc camera-name=/base/soc/i2c0mux/i2c@0/imx219@10 ! video/x-raw,width=640,height=480,framerate=30/1 ! appsink",CAP_GSTREAMER);
     VideoCapture cap1("gst-launch-1.0 libcamerasrc camera-name=/base/soc/i2c0mux/i2c@1/imx219@10 ! video/x-raw,width=640,height=480,framerate=30/1 ! appsink",CAP_GSTREAMER);
     VideoWriter out0("gst-launch-1.0 appsrc ! v4l2convert ! v4l2h264enc ! 'video/x-h264,level=(string)4.2,profile=(string)baseline' ! h264parse ! rtph264pay config-interval=-1 ! udpsink host=172.17.141.179 port=5000", 0, 30.0, {640, 480}, 1);
     VideoWriter out1("gst-launch-1.0 appsrc ! v4l2convert ! v4l2h264enc ! 'video/x-h264,level=(string)4.2,profile=(string)baseline' ! h264parse ! rtph264pay config-interval=-1 ! udpsink host=172.17.141.179 port=5001", 0, 30.0, {640, 480}, 1);
