@@ -1,5 +1,6 @@
 // Send streams from cameras 0 and 1 to laptop from rpi
 // pipeline: gst-launch-1.0 libcamerasrc camera-name=/base/soc/i2c0mux/i2c@0/imx219@10 ! video/x-raw,width=640,height=480,framerate=30/1 ! v4l2convert ! v4l2h264enc ! 'video/x-h264,level=(string)4.2,profile=(string)baseline' ! h264parse ! rtph264pay config-interval=-1 ! udpsink host=172.17.141.179 port=5000 
+#include <opencv2/opencv.hpp>
 using namespace cv;
 
 #include <iostream>
