@@ -6,8 +6,9 @@ using namespace cv;
 using namespace std;
 
 int main(){
-    VideoCapture cap0("gst-launch-1.0 -vvvv udpsrc port=5000 caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink",CAP_GSTREAMER);
-    VideoCapture cap1("gst-launch-1.0 -vvvv udpsrc port=5001 caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink",CAP_GSTREAMER);
+    cout << getBuildInformation() << endl;
+    VideoCapture cap0("udpsrc port=5000 caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink sync=false drop=true",CAP_GSTREAMER);
+    VideoCapture cap1("udpsrc port=5001 caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink sync=false drop=true",CAP_GSTREAMER);
     //VideoWriter out("autovideosink", 0, 30.0, {1280, 480}, 1);
     if(!cap0.isOpened() && !cap1.isOpened())
     {
@@ -27,5 +28,6 @@ int main(){
         }
         hconcat(frame0,frame1,frame);
         imshow("window",frame);
+        waitKey(0);
     }
 }
