@@ -1,6 +1,6 @@
 # Handheld CVG Notes
 
-**Important**: check waveshare.io cm4 documentation for necessary changes to boot config to recognize the imx219 cameras
+**Important**: check waveshare.io cm4 documentation for necessary changes to boot config to recognize the imx219 cameras and make sure opencv is build with gstreamer compatibility on both devices
 
 ## PROBLEM
 
