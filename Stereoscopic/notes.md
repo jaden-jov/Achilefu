@@ -45,7 +45,7 @@ Stereo rectification aligns the images from both cameras to be on the same plane
 	2. Apply OpenCV’s cv2.stereoRectify() to compute the rectification transforms for each camera.
 	3. Use cv2.initUndistortRectifyMap() and cv2.remap() to apply the rectification to the images captured by the cameras.
 4. Synchronization
-Ensure that both cameras are capturing images simultaneously to avoid any temporal misalignment.
+Ensure that both cameras are capturing images simultaneously to avoid any temporal misalignment. (adding chatgpt script to calibration testing but that's a problem for another day)
 5. Calibration with the HMD
 To ensure the virtual imagery aligns with the real-world view seen through the HMD:
 	1. Determine the position and orientation of the cameras relative to the HMD. This might involve physically measuring the distances and angles or using a tracking system.
@@ -89,6 +89,10 @@ pipeline-from-opencv-with-videowriter
 %5BFINAL%5D%20libcamerasrc_%20Introduction%20and%20usage%20of%20libcamera%
 27s%20GStreamer%20element.pdf
 	libcamerasrc info
+- https://www.reddit.com/r/raspberry_pi/comments/5fz4jb/it_is_a_pita_to_find_the_datasheet_for_the_sony/
+- https://github.com/rellimmot/Sony-IMX219-Raspberry-Pi-V2-CMOS
+
+  	information about the camera
 - OpenCV: For camera calibration, stereo rectification, and image processing.
 - OpenHMD: For interfacing with various HMDs and obtaining HMD-specific parameters.
 - ROS (Robot Operating System): For synchronization and handling multiple sensor data streams if needed.
