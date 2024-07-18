@@ -3,6 +3,10 @@
 GStreamerTesting contains a working pipeling that takes two camera streams and displays them side by side, the single stream test is in Handheld CVG 
 Next step is to learn how the frames need to be transformed to produce stereovision. Requires opencv with gstreamer compatability on the pi and linux laptop, bash script for that is in handheld branch
 
+libcamera-still --camera 1 --width 640 --height 480 --iso 100 --shutter 10000 --timeout 2000 -o image1.jpg
+
+run instrinsic calibration again after putting the bandpass filter on
+
 ## PROBLEM
 
 The challenge is to implement stereoscopic NIR imaging in the CVG headset
