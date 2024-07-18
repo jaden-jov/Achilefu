@@ -1,3 +1,5 @@
+# from chatgpt, was gonna just see if this works but I'm too lazy to troubleshoot someone else's code without knowing whats going on so I'm going to use this as a reference
+
 import cv2
 import numpy as np
 import glob
@@ -125,6 +127,8 @@ disparity_normalized = cv2.normalize(disparity, disparity, alpha=0, beta=255, no
 disparity_normalized = np.uint8(disparity_normalized)
 
 # Display the images
+frame = cv2.hconcat([rectified_img1,rectified_img2])
+cv2.imshow('Concatenated Image', frame)
 cv2.imshow('Rectified Image 1', rectified_img1)
 cv2.imshow('Rectified Image 2', rectified_img2)
 cv2.imshow('Disparity Map', disparity_normalized)
