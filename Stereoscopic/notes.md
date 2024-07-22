@@ -31,7 +31,7 @@ To achieve accurate stereoscopic vision with your head-mounted display (HMD) and
 perform several calibration steps. These steps ensure that the virtual imagery aligns correctly with the real-world view seen through the HMD. Here 
 are the key calibration steps:
 
-1. Intrinsic Calibration of Cameras
+1. Intrinsic Calibration of Cameras **DONE**
 Intrinsic calibration involves determining the internal characteristics of each camera, such as focal length, optical center, and lens distortion
 parameters. You can use a calibration tool like OpenCV to perform this task. The steps are:
 	1. Capture multiple images of a known calibration pattern (like a chessboard or a grid) at different orientations and positions.
@@ -63,6 +63,23 @@ This step ensures that the stereoscopic vision aligns with the user's view throu
 If the color reproduction of the fluorescent imaging is critical, perform color calibration to ensure accurate color representation.
 	1. Capture images of a color calibration target under the fluorescent lighting.
 	2. Adjust the color balance and settings of the cameras to match the expected colors.
+8. Latency Calibration:
+	1. Measure and minimize the delay between camera capture and display output.
+	2. This is crucial for maintaining a comfortable AR experience.
+ 9. Field of View (FOV) Matching:
+	1. Ensure the cameras' FOV matches or slightly exceeds the HMD's FOV.
+	2. Adjust camera placement or use lenses to match FOVs if necessary.
+10. Depth Calibration:
+	1. Calibrate the stereo system's depth perception to real-world measurements.
+	2. This is important for accurate AR overlay placement.
+11. User-specific Calibration:
+	1. Develop a quick calibration routine for individual users to fine-tune the system.
+	2. This might include adjusting for different face shapes and eye positions.
+12. Dynamic Calibration:
+	1. Implement a system to maintain calibration during use, accounting for potential shifts in camera or HMD position.
+13. Fluorescence-specific Calibration:
+	1. Calibrate the system for the specific fluorescent markers or dyes you're using.
+	2. This may involve spectral calibration to accurately detect and display fluorescent signals.
 
 ## RESOURCES
 - Mela-2015-Stereoscopic Integrated Imaging Gogg.pdf
