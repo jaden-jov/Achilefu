@@ -16,8 +16,8 @@ def stereo_calibrate(mtx1, dist1, mtx2, dist2, frames_folder):
     imgpoints1 = [] # 2d points in image plane.
     imgpoints2 = [] # 2d points in image plane.
 
-    images1 = glob.glob(frames_folder + '/left*.jpg')
-    images2 = glob.glob(frames_folder + '/right*.jpg')
+    images1 = sorted(glob.glob(frames_folder + '/left*.jpg'))
+    images2 = sorted(glob.glob(frames_folder + '/right*.jpg'))
     
     image_size = None
     for i, fname in enumerate(images1):
