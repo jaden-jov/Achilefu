@@ -7,6 +7,8 @@ libcamera-still --camera 1 --width 640 --height 480 --iso 100 --shutter 10000 --
 
 run instrinsic calibration again after putting the bandpass filter on
 
+glob doesn't sort by itself
+
 ## PROBLEM
 
 The challenge is to implement stereoscopic NIR imaging in the CVG headset
@@ -37,7 +39,7 @@ parameters. You can use a calibration tool like OpenCV to perform this task. The
 	1. Capture multiple images of a known calibration pattern (like a chessboard or a grid) at different orientations and positions.
 	2. Use OpenCV functions like cv2.findChessboardCorners() and cv2.calibrateCamera() to calculate the intrinsic parameters of each camera.
 	3. Save the intrinsic parameters (camera matrix and distortion coefficients) for each camera.
-2. Extrinsic Calibration of Cameras
+2. Extrinsic Calibration of Cameras **DONE**
 Extrinsic calibration determines the relative position and orientation between the two cameras. This step is crucial for achieving proper stereo 
 vision.
 	1. Capture images simultaneously from both cameras of the same calibration pattern.
