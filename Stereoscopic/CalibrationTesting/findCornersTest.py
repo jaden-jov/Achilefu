@@ -22,8 +22,18 @@ for filename in os.listdir(directory):
         
         # Find the chessboard corners
         ret, corners = cv2.findChessboardCorners(gray, pattern_size, None)
-        
-        if not ret:
+
+        if ret:
+            # Draw the chessboard corners
+            cv2.drawChessboardCorners(image, pattern_size, corners, ret)
+            # Display the image
+            cv2.imshow('Chessboard Corners', image)
+            # Wait for a key press to continue to the next image
+            cv2.waitKey(0)
+        else:
             print(f"Chessboard corners not found in: {filename}")
+
+# Close all OpenCV windows
+cv2.destroyAllWindows()
 
 print("Processing complete.")

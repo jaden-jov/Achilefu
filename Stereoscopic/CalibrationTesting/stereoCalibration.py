@@ -20,8 +20,6 @@ def stereo_calibrate(mtx1, dist1, mtx2, dist2, frames_folder):
     images2 = glob.glob(frames_folder + '/right*.jpg')
     
     image_size = None
-    min_corners = 16
-
     for i, fname in enumerate(images1):
         img1 = cv2.imread(images1[i])
         img2 = cv2.imread(images2[i])
@@ -39,8 +37,7 @@ def stereo_calibrate(mtx1, dist1, mtx2, dist2, frames_folder):
         # If found, add object points, image points (after refining them)
         if ret1 and ret2:
                         
-            objp_subset = objp[:min_corners]
-            objpoints.append(objp_subset)
+            objpoints.append(objp)
 
             corners1 = cv2.cornerSubPix(gray1,corners1,(11,11),(-1,-1),criteria)
             imgpoints1.append(corners1)
@@ -88,5 +85,5 @@ mtx2 = np.array(calib2['camera_matrix'])
 dist2 = np.array(calib2['dist_coeffs'])
 
 # Perform stereo calibration
-frames_folder = '/StereoChess'
+frames_folder = './StereoChess'
 stereo_calibrate(mtx1, dist1, mtx2, dist2, frames_folder)
