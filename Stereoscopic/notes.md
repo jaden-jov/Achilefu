@@ -118,6 +118,8 @@ pipeline-from-opencv-with-videowriter
 - https://github.com/rellimmot/Sony-IMX219-Raspberry-Pi-V2-CMOS
 
   	information about the camera
+- https://forums.raspberrypi.com/viewtopic.php?t=351197
+- 	3d tings
 - OpenCV: For camera calibration, stereo rectification, and image processing.
 - OpenHMD: For interfacing with various HMDs and obtaining HMD-specific parameters.
 - ROS (Robot Operating System): For synchronization and handling multiple sensor data streams if needed.
