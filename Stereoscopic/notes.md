@@ -52,34 +52,36 @@ Stereo rectification aligns the images from both cameras to be on the same plane
 	3. Use cv2.initUndistortRectifyMap() and cv2.remap() to apply the rectification to the images captured by the cameras.
 4. Synchronization
 Ensure that both cameras are capturing images simultaneously to avoid any temporal misalignment. (adding chatgpt script to calibration testing but that's a problem for another day)
-5. Calibration with the HMD
+5. Display
+   	1. Find out how to display SBS 3d content on the glasses using raspberry pi
+7. Calibration with the HMD
 To ensure the virtual imagery aligns with the real-world view seen through the HMD:
 	1. Determine the position and orientation of the cameras relative to the HMD. This might involve physically measuring the distances and angles or using a tracking system.
 	2. Calibrate the display parameters of the HMD, such as the field of view (FOV), eye-to-screen distance, and any lens distortion.
-6. Alignment with User’s View
+8. Alignment with User’s View
 This step ensures that the stereoscopic vision aligns with the user's view through the HMD lenses:
 	1. Display calibration patterns (like grids or crosshairs) on the HMD and align them with the real-world view.
 	1. Adjust the virtual camera parameters (like the position and orientation) in the AR software to match the user's perspective through the HMD.
 	1. Perform user testing and fine-tuning to ensure that the alignment feels natural and accurate.
-7. Color Calibration (Optional)
+9. Color Calibration (Optional)
 If the color reproduction of the fluorescent imaging is critical, perform color calibration to ensure accurate color representation.
 	1. Capture images of a color calibration target under the fluorescent lighting.
 	2. Adjust the color balance and settings of the cameras to match the expected colors.
-8. Latency Calibration:
+10. Latency Calibration:
 	1. Measure and minimize the delay between camera capture and display output.
 	2. This is crucial for maintaining a comfortable AR experience.
- 9. Field of View (FOV) Matching:
+ 11. Field of View (FOV) Matching:
 	1. Ensure the cameras' FOV matches or slightly exceeds the HMD's FOV.
 	2. Adjust camera placement or use lenses to match FOVs if necessary.
-10. Depth Calibration:
+12. Depth Calibration:
 	1. Calibrate the stereo system's depth perception to real-world measurements.
 	2. This is important for accurate AR overlay placement.
-11. User-specific Calibration:
+13. User-specific Calibration:
 	1. Develop a quick calibration routine for individual users to fine-tune the system.
 	2. This might include adjusting for different face shapes and eye positions.
-12. Dynamic Calibration:
+14. Dynamic Calibration:
 	1. Implement a system to maintain calibration during use, accounting for potential shifts in camera or HMD position.
-13. Fluorescence-specific Calibration:
+15. Fluorescence-specific Calibration:
 	1. Calibrate the system for the specific fluorescent markers or dyes you're using.
 	2. This may involve spectral calibration to accurately detect and display fluorescent signals.
 
