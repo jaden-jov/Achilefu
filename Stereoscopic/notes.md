@@ -9,6 +9,23 @@ run instrinsic calibration again after putting the bandpass filter on
 
 glob doesn't sort by itself
 
+hdmi_mode=87
+hdmi_cvt=1280 480 60
+^^these changes to boot config tells the pi that the display is a custom display capable of displaying those parameters
+
+tvservice -e 'DMT {width} {height} {refresh_rate}
+fbset -depth 8; fbset -depth 16
+^^this is a way to change it from the command line so it can be done through the program using subprocess, probably do this before initializing pygame or opencv
+
+def process_frame(frame):
+	b, g, r, a = cv2.split(frame)
+	mask = a > 0
+        b = b * mask
+	g = g * mask
+	r = r * mask
+	return cv2.merge([b, g, r, a])
+ ^^turns pixels with 0 alpha to black 
+
 ## PROBLEM
 
 The challenge is to implement stereoscopic NIR imaging in the CVG headset
