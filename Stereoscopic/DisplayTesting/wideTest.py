@@ -40,4 +40,4 @@ def display_sbs_3d_image(image_path):
 
 if __name__ == "__main__":
     # Replace 'path_to_your_image.jpg' with the actual path to your SBS 3D image
-    display_sbs_3d_image('path_to_your_image.jpg')
+    display_sbs_3d_image('./wideTest.jpg')
