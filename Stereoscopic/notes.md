@@ -3,6 +3,8 @@
 GStreamerTesting contains a working pipeling that takes two camera streams and displays them side by side, the single stream test is in Handheld CVG 
 Next step is to learn how the frames need to be transformed to produce stereovision. Requires opencv with gstreamer compatability on the pi and linux laptop, bash script for that is in handheld branch, as well as pygame (sudo apt install python3-pygame)
 
+skipping FOV mismatch and color calibration because the plan is just to take the pixels that see tumor and make them a bright color, and it should be in the middle of the FOV
+
 libcamera-still --camera 1 --width 640 --height 480 --iso 100 --shutter 10000 --timeout 2000 -o image1.jpg
 
 run instrinsic calibration again after putting the bandpass filter on
