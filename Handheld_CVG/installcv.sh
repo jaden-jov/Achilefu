@@ -1,29 +1,24 @@
 #!/usr/bin/bash
-
 # Install dependencies
 sudo apt-get update
 sudo apt-get install -y build-essential cmake git libgtk2.0-dev pkg-config \
                         libavcodec-dev libavformat-dev libswscale-dev \
                         libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
                         python3-dev python3-numpy libx264-dev libjpeg-dev
-
 # Install remaining GStreamer plugins
 sudo apt-get install -y libgstreamer-plugins-bad1.0-dev \
                         gstreamer1.0-plugins-ugly \
                         gstreamer1.0-tools \
                         gstreamer1.0-gl \
                         gstreamer1.0-gtk3
-
 # Clone OpenCV repository
 cd ~
 git clone https://github.com/opencv/opencv.git
 cd opencv
 git checkout 4.9.0
-
 # Create build directory
 mkdir build
 cd build
-
 # Configure build with GStreamer support
 PYTHON_VERSION=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
@@ -39,13 +34,15 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D PYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3 \
       -D OPENCV_PYTHON3_INSTALL_PATH=/usr/local/lib/python${PYTHON_VERSION}/dist-packages \
       -D OPENCV_ENABLE_NONFREE=YES \
+      -D BUILD_opencv_python3=ON \
+      -D PYTHON3_EXECUTABLE=$(which python3) \
+      -D PYTHON3_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+      -D PYTHON3_LIBRARY=$(python3 -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") \
       -D INSTALL_PYTHON_EXAMPLES=NO ..
-
 # Build OpenCV
 make -j$(nproc)
-
 # Install OpenCV
 sudo make install
 sudo ldconfig
-
 python3 -c "import cv2; print(cv2.__version__); print(cv2.getBuildInformation())"
+python -c "import cv2; print('OpenCV installed correctly' if 'cv2' in locals() else 'OpenCV not installed')"
