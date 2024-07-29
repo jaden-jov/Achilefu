@@ -6,15 +6,15 @@ def display_sbs_3d_image(image_path):
     pygame.init()
 
     # Set up the display
-    screen = pygame.display.set_mode((3840, 1080), pygame.FULLSCREEN)
+    screen = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
 
     try:
         # Load the image
         image = pygame.image.load(image_path)
         
         # Resize the image if it's not exactly 1280x480
-        if image.get_size() != (3840, 1080):
-            image = pygame.transform.scale(image, (3840, 1080))
+        if image.get_size() != (1920, 1080):
+            image = pygame.transform.scale(image, (1920, 1080))
         
         # Main loop
         running = True
