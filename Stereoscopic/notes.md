@@ -9,12 +9,19 @@ libcamera-still --camera 1 --width 640 --height 480 --iso 100 --shutter 10000 --
 
 run instrinsic calibration again after putting the bandpass filter on
 
+xrandr --newmode "3840x1080_60.00" 497.75 3840 4128 4544 5248 1080 1083 1093 1120 -hsync +vsync
+xrandr --addmode HDMI-1 3840x1080_60.00
+xrandr --output HDMI-1 --mode 3840x1080_60.00
+^^some chatgpt vomit for creating a new hdmi mode, no idea what to do with this and have not tested by in case i ever need
+
 glob doesn't sort by itself
 
 sbs 3d can be achieved using ian's repo to turn sbs 3d mode on and then rescaling a double wide image to 1920 x 1080 and displaying it using pygame. A more elegant solution would be to create a custom edid to allow the pi to ignore the default display driver's resolution and send a double wide image, but this may not even be possible from the device side if it is meant to split a 1920 x 1080 image, and would take more time
 
 transparency will require the pykms library to handle the drm, sending a 0 0 0 image does not work as intended, use the alpha gstreamer element to add that channel
 github.com/tomba/pykms
+
+sudo apt install -y python3-kms++ << to install pykms
 
 hdmi_mode=87
 hdmi_cvt=1280 480 60
