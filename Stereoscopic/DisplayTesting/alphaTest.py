@@ -1,56 +1,66 @@
 import pykms
-import numpy as np
+import numpy as np # allows matrix operations and greatly reduces runtime by removing the need to iterate through pixels with a for loop
 from PIL import Image
+import contextlib # make sure everything closes even when theres an error
 
 def load_image(path):
     with Image.open(path) as img:
         img = img.convert('RGBA')
         return np.array(img, dtype=np.uint8)
 
-def main():
-    # Initialize KMS
+@contextlib.contextmanager
+def kms_context():
     card = pykms.Card()
     res = pykms.ResourceManager(card)
     conn = res.reserve_connector()
     crtc = res.reserve_crtc(conn)
-    
-    # Find 1920x1080 mode
-    mode = conn.get_mode(1920, 1080)
-    
-    # Create framebuffer
-    fb = pykms.DumbFramebuffer(card, mode.hdisplay, mode.vdisplay, "XR24")
-    crtc.set_mode(conn, fb, mode)
+    try:
+        yield card, res, conn, crtc
+    finally:
+        crtc.set_mode(None)
 
-    # Map the framebuffer
-    buf = fb.map(pykms.DrmFormat.XRGB8888)
+def main():
+    # Initialize KMS
+    with kms_context() as (card, res, conn, crtc):
+        
+        # Find 1920x1080 mode
+        modes = conn.get_modes()
+        mode = next((m for m in modes if m.hdisplay == 1920 and m.vdisplay == 1080), None)
+        
+        # Create framebuffer
+        fb = pykms.DumbFramebuffer(card, mode.hdisplay, mode.vdisplay, "XR24")
+        crtc.set_mode(conn, fb, mode)
 
-    # Load image
-    image = load_image('./transTest.png')
+        # Map the framebuffer
+        buf = fb.map(pykms.DrmFormat.XRGB8888)
 
-    # Render image to buffer, skipping transparent pixels
-    # for y in range(mode.vdisplay):
-    #     for x in range(mode.hdisplay):
-    #         r, g, b, a = image[y, x]
-    #         if a > 0:
-    #             offset = (y * mode.hdisplay + x) * 4
-    #             buf[offset:offset+4] = [b, g, r, 255]
+        # Load image
+        image = load_image('./transTest.png')
 
-    # Create a mask for non-transparent pixels
-    mask = image[:, :, 3] > 0
+        # Render image to buffer, skipping transparent pixels
+        # for y in range(mode.vdisplay):
+        #     for x in range(mode.hdisplay):
+        #         r, g, b, a = image[y, x]
+        #         if a > 0:
+        #             offset = (y * mode.hdisplay + x) * 4
+        #             buf[offset:offset+4] = [b, g, r, 255]
 
-    # Prepare the buffer data
-    buffer_data = np.zeros((mode.vdisplay, mode.hdisplay, 4), dtype=np.uint8)
-    buffer_data[mask] = image[mask]
-    buffer_data[:, :, 3] = 255  # Set alpha to 255 for all non-transparent pixels
-    
-    # Flatten and copy the data to the buffer
-    np.copyto(buf, buffer_data.flatten())
+        # Create a mask for non-transparent pixels
+        mask = image[..., 3] > 0
 
-    # Keep the program running
-    input("Press Enter to exit...")
+        # Prepare the buffer data, making sure to convert from rgba to xrgb
+        buffer_data = np.zeros((mode.vdisplay, mode.hdisplay, 4), dtype=np.uint8)
+        buffer_data[mask, 0 ] = 255
+        buffer_data[mask, 1:] = image[mask, :3] 
+        
+        # Flatten and copy the data to the buffer
+        np.copyto(buf, buffer_data.flatten())
 
-    # Clean up
-    crtc.set_mode(None)
+        # Keep the program running
+        input("Press Enter to exit...")
+
+        # Clean up
+        crtc.set_mode(None)
 
 if __name__ == "__main__":
     main()
