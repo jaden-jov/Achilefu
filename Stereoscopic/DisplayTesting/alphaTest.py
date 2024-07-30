@@ -32,7 +32,9 @@ def main():
         crtc.set_mode(conn, fb, mode)
 
         # Map the framebuffer
-        buf = fb.map(pykms.DrmFormat.XRGB8888)
+        # buf = fb.map(pykms.DrmFormat.XRGB8888) << bad syntax, keeping because that is the correct format for the image
+        mapping = fb.map()
+        buf = mapping.data
 
         # Load image
         image = load_image('./transTest.png')
