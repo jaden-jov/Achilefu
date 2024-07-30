@@ -17,7 +17,8 @@ def kms_context():
     try:
         yield card, res, conn, crtc
     finally:
-        crtc.set_mode(None)
+        crtc.disable_mode()
+        conn.disconnect()
 
 def main():
     # Initialize KMS
@@ -60,7 +61,8 @@ def main():
         input("Press Enter to exit...")
 
         # Clean up
-        crtc.set_mode(None)
+        crtc.disable_mode()
+        conn.disconnect()
 
 if __name__ == "__main__":
     main()
