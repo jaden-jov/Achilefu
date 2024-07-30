@@ -147,3 +147,10 @@ pipeline-from-opencv-with-videowriter
 - OpenCV: For camera calibration, stereo rectification, and image processing.
 - OpenHMD: For interfacing with various HMDs and obtaining HMD-specific parameters.
 - ROS (Robot Operating System): For synchronization and handling multiple sensor data streams if needed.
+- DRM libraries / repos
+  	-https://github.com/notro/pydrm
+  	-https://github.com/tomba/pykms/tree/master << this is the one I can't install
+  	-https://github.com/raspberrypi/pykms << this one is promising, python bindings for kmsxx
+  	-https://github.com/tomba/kmsxx << c++
+  	-https://chromium.googlesource.com/chromiumos/third_party/autotest/+/factory-rambi-6420.B/client/cros/graphics/drm.py << probably works
+  	-https://chromium.googlesource.com/chromiumos/platform/factory/+/956efc827023349d5687454722f38d400549b2d2/py/system/drm.py << also probably 
