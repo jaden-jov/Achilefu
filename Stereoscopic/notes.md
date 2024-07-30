@@ -11,7 +11,7 @@ run instrinsic calibration again after putting the bandpass filter on
 
 glob doesn't sort by itself
 
-sbs 3d can be achieved using ian's repo to turn sbs 3d mode on and then rescaling a double wide image to 1920 x 1080 and displaying it using pygame
+sbs 3d can be achieved using ian's repo to turn sbs 3d mode on and then rescaling a double wide image to 1920 x 1080 and displaying it using pygame. A more elegant solution would be to create a custom edid to allow the pi to ignore the default display driver's resolution and send a double wide image, but this may not even be possible from the device side if it is meant to split a 1920 x 1080 image, and would take more time
 
 transparency will require the pykms library to handle the drm, sending a 0 0 0 image does not work as intended, use the alpha gstreamer element to add that channel
 github.com/tomba/pykms
