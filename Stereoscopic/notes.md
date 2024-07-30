@@ -16,6 +16,8 @@ sbs 3d can be achieved using ian's repo to turn sbs 3d mode on and then rescalin
 transparency will require the pykms library to handle the drm, sending a 0 0 0 image does not work as intended, use the alpha gstreamer element to add that channel
 github.com/tomba/pykms
 
+sudo apt install -y python3-kms++ << to install pykms
+
 hdmi_mode=87
 hdmi_cvt=1280 480 60
 ^^these changes to boot config tells the pi that the display is a custom display capable of displaying those parameters
