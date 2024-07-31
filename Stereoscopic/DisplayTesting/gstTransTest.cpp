@@ -7,7 +7,7 @@ using namespace std;
 int main(){
     // Define pipelines
     VideoCapture cap("gst-launch-1.0 filesrc location=./image1.jpg ! jpegdec ! videoconvert ! video/x-raw, format=RGB ! alpha alpha=1.0 ! video/x-raw, format=RGBA ! appsink", CAP_GSTREAMER);
-    VideoWriter out("appsrc ! videoconvert ! video/x-raw, format=RGBA ! kmssink ")
+    VideoWriter out("appsrc ! videoconvert ! video/x-raw, format=RGBA ! kmssink ", 0, 30.0, {1920, 1080}, 1);
     
     // Define variables
     Mat frame;
