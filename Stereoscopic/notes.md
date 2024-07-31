@@ -3,6 +3,10 @@
 GStreamerTesting contains a working pipeling that takes two camera streams and displays them side by side, the single stream test is in Handheld CVG 
 Next step is to learn how the frames need to be transformed to produce stereovision. Requires opencv with gstreamer compatability on the pi and linux laptop, bash script for that is in handheld branch, as well as pygame (sudo apt install python3-pygame)
 
+run 'fbset' in terminal to get frame buffer information, for the moverio on the pi it is a 1920 x 1080 display in rgba format
+
+displaying an image at 0 0 0 displays black, this could be because opacity depends on the alpha value, aka my code is displaying 0 0 0 225 in rgba, where transperncy would have to be 0 0 0 0
+
 skipping FOV mismatch and color calibration because the plan is just to take the pixels that see tumor and make them a bright color, and it should be in the middle of the FOV
 
 libcamera-still --camera 1 --width 640 --height 480 --iso 100 --shutter 10000 --timeout 2000 -o image1.jpg
@@ -13,6 +17,8 @@ xrandr --newmode "3840x1080_60.00" 497.75 3840 4128 4544 5248 1080 1083 1093 112
 xrandr --addmode HDMI-1 3840x1080_60.00
 xrandr --output HDMI-1 --mode 3840x1080_60.00
 ^^some chatgpt vomit for creating a new hdmi mode, no idea what to do with this and have not tested by in case i ever need
+
+https://github.com/torvalds/linux/blob/master/drivers/gpu/drm/panel/panel-simple.c <<my dinosaur brain wants to hard code lines 262-263
 
 glob doesn't sort by itself
 
@@ -160,4 +166,10 @@ pipeline-from-opencv-with-videowriter
   	-https://github.com/raspberrypi/pykms << this one is promising, python bindings for kmsxx
   	-https://github.com/tomba/kmsxx << c++
   	-https://chromium.googlesource.com/chromiumos/third_party/autotest/+/factory-rambi-6420.B/client/cros/graphics/drm.py << probably works
-  	-https://chromium.googlesource.com/chromiumos/platform/factory/+/956efc827023349d5687454722f38d400549b2d2/py/system/drm.py << also probably 
+  	-https://chromium.googlesource.com/chromiumos/platform/factory/+/956efc827023349d5687454722f38d400549b2d2/py/system/drm.py << also probably
+- Useful GStreamer resources
+  	-https://gstreamer.freedesktop.org/documentation/kms/index.html?gi-language=c
+  	-https://gstreamer.freedesktop.org/documentation/video/gstvideooverlay.html?gi-language=c#gst_video_overlay_set_render_rectangle
+  	-https://gstreamer.freedesktop.org/documentation/additional/design/dmabuf.html?gi-language=c
+  	-https://gstreamer.freedesktop.org/documentation/video/video-info-dma-drm.html?gi-language=c
+-https://developer.toradex.com/linux-bsp/application-development/multimedia/display-output-resolution-and-timings-linux/ << information on how displays work, see Injecting a Binary EDID Blob for double wide screen
