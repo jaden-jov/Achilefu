@@ -3,6 +3,8 @@
 GStreamerTesting contains a working pipeling that takes two camera streams and displays them side by side, the single stream test is in Handheld CVG 
 Next step is to learn how the frames need to be transformed to produce stereovision. Requires opencv with gstreamer compatability on the pi and linux laptop, bash script for that is in handheld branch, as well as pygame (sudo apt install python3-pygame)
 
+sudo apt install libdrm-tests << this makes modetest work and gives info about things
+
 run 'fbset' in terminal to get frame buffer information, for the moverio on the pi it is a 1920 x 1080 display in rgba format
 
 displaying an image at 0 0 0 displays black, this could be because opacity depends on the alpha value, aka my code is displaying 0 0 0 225 in rgba, where transperncy would have to be 0 0 0 0
