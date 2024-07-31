@@ -173,3 +173,4 @@ pipeline-from-opencv-with-videowriter
   	-https://gstreamer.freedesktop.org/documentation/additional/design/dmabuf.html?gi-language=c
   	-https://gstreamer.freedesktop.org/documentation/video/video-info-dma-drm.html?gi-language=c
 -https://developer.toradex.com/linux-bsp/application-development/multimedia/display-output-resolution-and-timings-linux/ << information on how displays work, see Injecting a Binary EDID Blob for double wide screen
+-https://github.com/mad4ms/python-opencv-gstreamer-examples << exactly what its called, plus instructions on how to use hardware acceleration shit with gst
