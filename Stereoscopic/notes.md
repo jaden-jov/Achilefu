@@ -7,7 +7,7 @@ use Modetest -M vc4 to find connector id number, theres also a bunch of other ou
 
 AR24 = RGBA AB24 = BGRA
 
-use Modetest -M vc4 -p to find available planes, pick one with max height and width greater than 1920 x 1080 and support rgba/bgra and the crtc number the display uses, which is found by modetest -M vc4 -c and looking for the one associated with the connecter (usually HDMI-1-A or smth like that)
+use Modetest -M vc4 -p to find available planes, pick one with framebuffer number associated with the crtc, and support rgba/bgra and the crtc number the display uses, which is found by modetest -M vc4 -c and looking for the one associated with the connecter (usually HDMI-1-A or smth like that)
 
 Modetest -M vc4 -r should give resolution, refresh rate, connecter id, and crtc idk and it has a lot less output that the other modetests mentioned
 
