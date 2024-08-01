@@ -3,6 +3,12 @@
 GStreamerTesting contains a working pipeling that takes two camera streams and displays them side by side, the single stream test is in Handheld CVG 
 Next step is to learn how the frames need to be transformed to produce stereovision. Requires opencv with gstreamer compatability on the pi and linux laptop, bash script for that is in handheld branch, as well as pygame (sudo apt install python3-pygame)
 
+use Modetest -M vc4 to find connector id number, theres also a bunch of other output about the device and modes and such. vc4 is the display driver in the raspberry pi im pretty sure. 
+
+use Modetest -M vc4 -p to find available planes, pick one with max height and width greater than 1920 x 1080 and support rgba/bgra and the crtc number the display uses, which is found by modetest -M vc4 -c and looking for the one associated with the connecter (usually HDMI-1-A or smth like that)
+
+Modetest -M vc4 -r should give resolution, refresh rate, connecter id, and crtc idk and it has a lot less output that the other modetests mentioned
+
 sudo apt install libdrm-tests << this makes modetest work and gives info about things
 
 run 'fbset' in terminal to get frame buffer information, for the moverio on the pi it is a 1920 x 1080 display in rgba format
