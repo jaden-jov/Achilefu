@@ -1,9 +1,16 @@
 # Stereoscopic Notes
 
-GStreamerTesting contains a working pipeling that takes two camera streams and displays them side by side, the single stream test is in Handheld CVG 
+GStreamerTesting contains a working pipeline that takes two camera streams and displays them side by side, the single stream test is in Handheld CVG 
 Next step is to learn how the frames need to be transformed to produce stereovision. Requires opencv with gstreamer compatability on the pi and linux laptop, bash script for that is in handheld branch, as well as pygame (sudo apt install python3-pygame)
 
-use Modetest -M vc4 to find connector id number, theres also a bunch of other output about the device and modes and such. vc4 is the display driver in the raspberry pi im pretty sure. 
+sudo usermod -aG video $(whoami) << adds user to video group, grant
+ing permission to mess with drm (hopefully)
+
+check via echo $XDG_SESSION_TYPE
+Wayland hogs the drm master status so no program can access it, turn it off via sudo systemctl stop lightdm and run the program from a terminal, drm master does not need to be set via a c program if no other display is running
+
+
+use Modetest -M vc4 to find connector id number, theres also a bunch of other output about the device and modes and such. vc4 is the display driver in the raspberry pi im pretty sure. This is only for playing with kmssink options, however just using kmssink it usually figures everything out on its own
 
 AR24 = RGBA AB24 = BGRA
 
