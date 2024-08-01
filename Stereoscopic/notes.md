@@ -7,6 +7,8 @@ use Modetest -M vc4 to find connector id number, theres also a bunch of other ou
 
 AR24 = RGBA AB24 = BGRA
 
+DRM will give a permission denied error on kmssink because the DRM can only have one master application changing modes. ls /dev/dri/ will display all drm devices. example script to change master is given in changeMaster.c, it has not been tested. the entire application might have to be written in C for this approach.
+
 use Modetest -M vc4 -p to find available planes, pick one with framebuffer number associated with the crtc, and support rgba/bgra and the crtc number the display uses, which is found by modetest -M vc4 -c and looking for the one associated with the connecter (usually HDMI-1-A or smth like that)
 
 Modetest -M vc4 -r should give resolution, refresh rate, connecter id, and crtc idk and it has a lot less output that the other modetests mentioned
