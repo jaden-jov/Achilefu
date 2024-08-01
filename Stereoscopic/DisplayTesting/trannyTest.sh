@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-gst-launch-1.0 filesrc location=image1.jpg ! jpegdec ! videoconvert ! videoscale ! video/x-raw,width=1920,height=1080,format=RGB ! alpha alpha=0.0 ! video/x-raw,width=1920,height=1080,format=RGBA ! video/x-raw,format=BGRA ! kmssink driver-name=vc4 connector-id=32 plane-id=84 force-modesetting=true render-rectangle="<0,0,1920,1080>"
+gst-launch-1.0 filesrc location=image1.jpg ! jpegdec ! videoconvert ! videoscale ! video/x-raw,width=1920,height=1080,format=RGB ! alpha alpha=0.0 ! video/x-raw,width=1920,height=1080,format=RGBA ! kmssink driver-name=vc4 connector-id=32 plane-id=84 force-modesetting=true render-rectangle="<0,0,1920,1080>"
