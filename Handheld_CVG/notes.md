@@ -65,3 +65,6 @@ Implement GStreamer with the handheld part of the CVG to reduce the bulk added b
 -https://www.ushio.eu/product/edc/ << seem to be good options here
 
 -https://www.lasercomponents.com/fileadmin/user_upload/home/Datasheets/pd_ld/pl78.pdf << one decent option here
+
+-https://www.survivallaserusa.com/ << some stuffs here
+
