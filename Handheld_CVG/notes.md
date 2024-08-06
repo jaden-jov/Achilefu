@@ -56,12 +56,12 @@ Implement GStreamer with the handheld part of the CVG to reduce the bulk added b
 
 -https://www.laserlands.net/laser-diode/780nm-diode/11071132.html
 
--https://ams-osram.com/products/leds/ir-leds/osram-oslon-black-sfh-4715as-a01
+-https://ams-osram.com/products/leds/ir-leds/osram-oslon-black-sfh-4715as-a01 << 830+ wavelength, too high
 
--https://download.luminus.com/datasheets/Luminus_SST-10-FR_Datasheet.pdf
+-https://download.luminus.com/datasheets/Luminus_SST-10-FR_Datasheet.pdf << 745-750 nm, not sure if this is enough
 
--https://www.digikey.com/en/products/detail/marktech-optoelectronics/MTE2077N1-R/4249222
+-https://www.digikey.com/en/products/detail/marktech-optoelectronics/MTE2077N1-R/4249222 << 8 mW power but easy to make an array of these
 
--https://www.ushio.eu/product/edc/
+-https://www.ushio.eu/product/edc/ << seem to be good options here
 
--https://www.lasercomponents.com/fileadmin/user_upload/home/Datasheets/pd_ld/pl78.pdf
+-https://www.lasercomponents.com/fileadmin/user_upload/home/Datasheets/pd_ld/pl78.pdf << one decent option here
