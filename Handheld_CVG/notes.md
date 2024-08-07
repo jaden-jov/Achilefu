@@ -25,7 +25,9 @@ Implement GStreamer with the handheld part of the CVG to reduce the bulk added b
 1. Look into options **COMPLETED**
 2. Contact Lumixtar **COMPLETED, no way to establish contact**
 3. Take apart the laser modules and try to find a way to make the smaller **TRIED, PROVING DIFFICULT**
-4. Return to step 1
+4. Return to step 1 **DONE AGAIN**
+5. Contact Ushio **REQUEST SENT, PRAYING**
+6. Contact Marubeni **PRAYING TO THE LORD**
 
 ### Gstreamer
 1. establish a working single camera pipeline **COMPLETED**
@@ -68,3 +70,4 @@ Implement GStreamer with the handheld part of the CVG to reduce the bulk added b
 
 -https://www.survivallaserusa.com/ << some stuffs here
 
+-https://tech-led.com/wp-content/uploads/2024/03/SMBB790DS-1100-03.pdf << might be perfection, the website also has a 10 degree one
