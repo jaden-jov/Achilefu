@@ -26,13 +26,13 @@ Implement GStreamer with the handheld part of the CVG to reduce the bulk added b
 2. Contact Lumixtar **COMPLETED, no way to establish contact**
 3. Take apart the laser modules and try to find a way to make the smaller **TRIED, PROVING DIFFICULT**
 4. Return to step 1 **DONE AGAIN**
-5. Contact Ushio **REQUEST SENT, PRAYING**
-6. Contact Marubeni **PRAYING TO THE LORD**
+5. Contact Ushio **REQUEST SENT, PRAYING** contact: customerservice@ushio.com if needed
+6. Contact Marubeni **PRAYING TO THE LORD** **UPDATE: THE LORD ANSWERED**
 
 ### Gstreamer
 1. establish a working single camera pipeline **COMPLETED**
 2. write a program that switches between displaying two streams with a keyboard input **SO THIS WON"T WORK, THERE ISN'T A WORKING GSTREAMER CVG APP**
-3. look into cvg program and find a way to look for / take frames over udp when they are being received, makes cvg code trivial
+3. look into cvg program and find a way to look for / take frames over udp when they are being received, makes cvg code trivial **DECIDING THIS ISNT A TOP PRIORITY, SWITCHING TO CAD**
 
 ## RESOURCES
 -https://www.laserlands.net/diode-laser-module/780nm-ir-laser-
